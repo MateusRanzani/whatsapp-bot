@@ -11,10 +11,18 @@ client.on("ready", () => {
   console.log("Client is ready!");
 });
 
-client.on("message_create", async (message) => {
-  if (message.body === "Oi") {
-    await message.reply("Oi");
-  }
+client.on("message", async (msg) => {
+  // MESSAGES WITH MENTIONS
+
+  // const chat = await msg.getChat();
+  // let user = await msg.getContact();
+  // await chat.sendMessage(`Olá @${user.id.user}`, {
+  //   mentions: [user],
+  // });
+  
+  if (msg.body) {
+		await client.sendMessage(msg.from, 'Olá, tudo bem? Essa é uma mensagem teste do chat bot, espero que dê certo');
+	}
 });
 
 client.initialize();
